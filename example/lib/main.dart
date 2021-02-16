@@ -15,6 +15,7 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   String _platformVersion = 'Unknown';
+  String _firebaseInstanceId = 'Unknown';
 
   @override
   void initState() {
@@ -25,9 +26,12 @@ class _MyAppState extends State<MyApp> {
   // Platform messages are asynchronous, so we initialize in an async method.
   Future<void> initPlatformState() async {
     String platformVersion;
+    String firebaseInstanceId;
+
     // Platform messages may fail, so we use a try/catch PlatformException.
     try {
       platformVersion = await FlutterFirebaseInstanceId.platformVersion;
+      firebaseInstanceId = await FlutterFirebaseInstanceId.firebaseInstanceId;
     } on PlatformException {
       platformVersion = 'Failed to get platform version.';
     }
@@ -39,6 +43,7 @@ class _MyAppState extends State<MyApp> {
 
     setState(() {
       _platformVersion = platformVersion;
+      _firebaseInstanceId = firebaseInstanceId;
     });
   }
 
@@ -47,10 +52,13 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: const Text('Plugin example app'),
+          title: const Text('Flutter App Instance Id'),
         ),
-        body: Center(
-          child: Text('Running on: $_platformVersion\n'),
+        body: Column(
+          children: [
+            Text('Your Firebase iid is: $_platformVersion\n'),
+            Text('Running on: $_firebaseInstanceId\n'),
+          ],
         ),
       ),
     );

@@ -1,8 +1,8 @@
 name: flutter_firebase_instance_id
 description: Flutter plugin to get firebase app instance id from Firebase Analytics
 version: 0.0.1
-author:
-homepage:
+author: Marina Gonzalez
+homepage: https://github.com/mgonzalezc/flutter_firebase_instance_id
 
 environment:
   sdk: ">=2.7.0 <3.0.0"

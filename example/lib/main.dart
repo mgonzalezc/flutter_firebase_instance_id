@@ -56,8 +56,8 @@ class _MyAppState extends State<MyApp> {
         ),
         body: Column(
           children: [
-            Text('Your Firebase iid is: $_platformVersion\n'),
-            Text('Running on: $_firebaseInstanceId\n'),
+            Text('Your Firebase iid is: $_firebaseInstanceId\n'),
+            Text('Running on: $_platformVersion\n'),
           ],
         ),
       ),

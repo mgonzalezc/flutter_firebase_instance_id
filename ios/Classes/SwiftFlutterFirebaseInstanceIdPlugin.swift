@@ -1,5 +1,6 @@
 import Flutter
 import UIKit
+import FirebaseAnalytics
 
 public class SwiftFlutterFirebaseInstanceIdPlugin: NSObject, FlutterPlugin {
   public static func register(with registrar: FlutterPluginRegistrar) {
@@ -9,6 +10,19 @@ public class SwiftFlutterFirebaseInstanceIdPlugin: NSObject, FlutterPlugin {
   }
 
   public func handle(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
-    result("iOS " + UIDevice.current.systemVersion)
+    switch call.method {
+    case "getPlatformVersion":
+        result("iOS " + UIDevice.current.systemVersion)
+        break
+    case "getFirebaseInstanceId":
+        getFirebaseInstanceId(result: result)
+        break
+    default:
+        print ("Method not implemented")
+    }
+  }
+  
+  func getFirebaseInstanceId(result: @escaping FlutterResult) {
+    result(Analytics.appInstanceID())
   }
 }

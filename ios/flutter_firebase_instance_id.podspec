@@ -3,8 +3,6 @@ require 'yaml'
 pubspec = YAML.load_file(File.join('..', 'pubspec.yaml'))
 library_version = pubspec['version'].gsub('+', '-')
 
-firebase_sdk_version = '6.33.0'
-
 Pod::Spec.new do |s|
   s.name             = pubspec['name']
   s.version          = library_version
@@ -24,7 +22,7 @@ Pod::Spec.new do |s|
 
   s.ios.deployment_target = '9.0'
 
-  s.dependency 'Firebase/Analytics', "~> #{firebase_sdk_version}"
+  s.dependency 'Firebase/Analytics'
   
   s.static_framework = true
 end
